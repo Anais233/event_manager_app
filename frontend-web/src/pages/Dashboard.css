@@ -1,0 +1,40 @@
+/* Dans src/App.css ou un nouveau fichier Dashboard.css */
+.create-event-button {
+  display: inline-block; /* Pour que le padding et la marge fonctionnent comme un bouton */
+  padding: 10px 20px;
+  background-color: #28a745; /* Vert */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none; /* Enlève le soulignement du lien */
+  font-size: 1em;
+  margin-bottom: 30px; /* Espace sous le bouton */
+  transition: background-color 0.2s ease;
+}
+
+.create-event-button:hover {
+  background-color: #218838; /* Vert plus foncé au survol */
+}
+
+.manage-users-link {
+  display: inline-block;
+  margin-left: 15px;
+  background-color: #007bff; /* Bleu principal */
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.manage-users-link:hover {
+  background-color: #0056b3; /* Bleu foncé au hover */
+  transform: translateY(-2px); /* petit effet */
+}
+
+.manage-users-link:active {
+  background-color: #004494; /* encore plus foncé au clic */
+  transform: translateY(0);
+}

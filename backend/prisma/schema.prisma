@@ -1,0 +1,82 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model AppOrganization {
+  id       String       @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  name     String       @unique
+  employees AppUser[]   @relation("EmployeesOfOrganization")
+  admins    AppUser[]   @relation("AdminsOfOrganization")
+  events    AppEvent[]
+}
+
+model AppUser {
+  id             String            @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  email          String            @unique
+  password_hash  String
+  first_name     String
+  last_name      String
+  role           String            @default("employee_org")
+  isActive       Boolean           @default(false)
+
+  organizationId String?           @db.Uuid
+  organization   AppOrganization?  @relation("EmployeesOfOrganization", fields: [organizationId], references: [id], map: "AppUser_EmployeesOrg_fkey")
+  adminOf        AppOrganization?  @relation("AdminsOfOrganization", fields: [organizationId], references: [id], map: "AppUser_AdminsOrg_fkey")
+
+  events         AppEvent[]
+  protocolAccess ProtocolAccess[]
+}
+
+model AppEvent {
+  id             String           @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  organizerId    String           @db.Uuid
+  organizationId String           @db.Uuid
+  name           String
+  description    String?
+  maxParticipants Int?
+  startDate      DateTime
+  endDate        DateTime?
+  location       String?
+  imageUrl       String?
+
+  organizer      AppUser          @relation(fields: [organizerId], references: [id])
+  organization   AppOrganization  @relation(fields: [organizationId], references: [id])
+  participants   Participant[]
+  protocolAccess ProtocolAccess[]
+}
+
+model Participant {
+  id            String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  eventId       String    @db.Uuid
+  firstName     String
+  lastName      String
+  email         String
+  city          String?
+  country       String?
+  phone         String?
+  arrivalDate   DateTime?
+  departureDate DateTime?
+  qrCodeData    String    @unique
+  checkedIn     Boolean?  @default(false)
+  checkedInAt   DateTime?
+  registeredAt  DateTime? @default(now())
+  status        String    @default("PENDING")
+
+  event         AppEvent  @relation(fields: [eventId], references: [id])
+  @@unique([eventId, email])
+}
+
+model ProtocolAccess {
+  id       String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  userId   String   @db.Uuid
+  eventId  String   @db.Uuid
+
+  user     AppUser  @relation(fields: [userId], references: [id])
+  event    AppEvent @relation(fields: [eventId], references: [id])
+  @@unique([userId, eventId])
+}

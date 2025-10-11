@@ -1,0 +1,408 @@
+/* frontend/src/pages/EventDetailPage.css */
+
+.event-detail-page {
+    padding: 20px;
+    max-width: 900px;
+    margin: 20px auto;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    color: #333;
+}
+
+.event-detail-page h2 {
+    color: #0056b3;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.event-detail-page p {
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
+
+.back-button {
+    background-color: #6c757d;
+    color: white;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9em;
+    margin-bottom: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.back-button:hover {
+    background-color: #5a6268;
+}
+
+.register-event-button {
+    display: inline-block;
+    background-color: #28a745;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    margin-top: 15px;
+    margin-bottom: 25px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.register-event-button:hover {
+    background-color: #218838;
+}
+
+.event-actions {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px solid #eee;
+}
+
+.edit-event-button, .delete-event-button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9em;
+    transition: background-color 0.3s ease;
+}
+
+.edit-event-button {
+    background-color: #007bff;
+    color: white;
+    text-decoration: none; /* Pour les liens */
+}
+
+.edit-event-button:hover {
+    background-color: #0056b3;
+}
+
+.delete-event-button {
+    background-color: #dc3545;
+    color: white;
+}
+
+.delete-event-button:hover {
+    background-color: #c82333;
+}
+
+.checkin-section, .participants-section {
+    background-color: #e9ecef;
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 30px;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.checkin-section h3, .participants-section h3 {
+    color: #0056b3;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 5px;
+}
+
+.checkin-section form {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.checkin-section input[type="text"] {
+    flex-grow: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+.checkin-section button {
+    background-color: #17a2b8;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+}
+
+.checkin-section button:hover {
+    background-color: #138496;
+}
+
+.export-csv-button {
+    background-color: #ffc107;
+    color: #333;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9em;
+    margin-bottom: 15px;
+    transition: background-color 0.3s ease;
+}
+
+.export-csv-button:hover {
+    background-color: #e0a800;
+}
+
+.participants-list {
+    list-style: none;
+    padding: 0;
+}
+
+.participant-item {
+    display: flex;
+    justify-content: space-between; /* Pour espacer les infos et le QR code */
+    align-items: center;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.participant-item.checked-in {
+    border-left: 5px solid #28a745; /* Bordure verte pour le check-in */
+    background-color: #e6ffe6; /* Fond légèrement vert */
+}
+
+.participant-info {
+    flex-grow: 1;
+}
+
+.participant-info span {
+    display: block;
+    margin-bottom: 3px;
+}
+
+.checked-in-status {
+    color: #28a745;
+    font-weight: bold;
+    font-size: 0.9em;
+}
+
+.not-checked-in-status {
+    color: #dc3545;
+    font-weight: bold;
+    font-size: 0.9em;
+}
+
+.qrcode-container {
+    display: flex;
+    flex-direction: column; /* Pour aligner le QR code et le bouton */
+    align-items: center;
+    gap: 5px;
+    margin-left: 15px; /* Espace entre l'info et le QR code */
+}
+
+.qrcode-container canvas {
+    border: 1px solid #eee;
+    padding: 2px;
+    background-color: white;
+}
+
+.copy-qrcode-button {
+    background-color: #007bff;
+    color: white;
+    padding: 5px 8px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 0.8em;
+    transition: background-color 0.3s ease;
+}
+
+.copy-qrcode-button:hover {
+    background-color: #0056b3;
+}
+
+
+/* Styles de base pour les messages */
+.loading-message {
+    text-align: center;
+    color: #007bff;
+    font-style: italic;
+    margin-top: 20px;
+}
+
+.error-message {
+    text-align: center;
+    color: #dc3545;
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 20px 0;
+}
+
+.success-message {
+    text-align: center;
+    color: #28a745;
+    background-color: #d4edda;
+    border: 1px solid #c3e6cb;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 20px 0;
+}
+
+.send-invites-button {
+    background-color: #ff8c00; /* Couleur orange pour envoyer */
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9em;
+    transition: background-color 0.3s ease;
+}
+
+.send-invites-button:hover {
+    background-color: #e67e00;
+}
+
+/* Styles pour la modale */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    width: 90%;
+    max-width: 500px;
+    position: relative;
+}
+
+.modal-content h3 {
+    margin-top: 0;
+    color: #0056b3;
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.modal-content label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.modal-content textarea {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+    resize: vertical; /* Permet de redimensionner verticalement */
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.modal-actions button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+}
+
+.modal-actions button[type="submit"] {
+    background-color: #28a745;
+    color: white;
+}
+
+.modal-actions button[type="submit"]:hover:not(:disabled) {
+    background-color: #218838;
+}
+
+.modal-actions button[type="button"] { /* Annuler */
+    background-color: #6c757d;
+    color: white;
+}
+
+.modal-actions button[type="button"]:hover:not(:disabled) {
+    background-color: #5a6268;
+}
+
+.modal-actions button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* Messages de statut dans la modale */
+.modal-content .success-message {
+    font-size: 0.9em;
+    margin-top: 10px;
+    padding: 8px;
+}
+
+.modal-content .error-message {
+    font-size: 0.9em;
+    margin-top: 10px;
+    padding: 8px;
+}
+
+/* Bouton pour valider une inscription */
+.validate-button {
+    background-color: #007bff; /* Bleu */
+    color: white;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9em;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.validate-button:hover {
+    background-color: #0056b3; /* Bleu plus foncé */
+}
+
+/* Badge de statut du participant */
+.status-tag {
+    display: inline-block;
+    padding: 3px 8px;
+    border-radius: 12px;
+    font-size: 0.8em;
+    font-weight: bold;
+    margin-top: 3px;
+    margin-right: 8px;
+}
+
+/* Spécifique aux statuts */
+.status-tag.pending {
+    background-color: #ffeeba;
+    color: #856404;
+    border: 1px solid #ffeeba;
+}
+
+.status-tag.validated {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
